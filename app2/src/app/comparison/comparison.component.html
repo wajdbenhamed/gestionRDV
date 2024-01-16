@@ -1,0 +1,17 @@
+<h1>le nombre le plus grand</h1>
+<form (submit)="comparer()" >
+
+<div>
+<label for="num1">Numero 1</label>
+<input type="number" [(ngModel)]="a" name="num1" id="num1"/><br>
+<label for="num2">Numero 2</label>
+<input type="number" [(ngModel)]="b" name="num2" id="num2" />
+</div>
+<div>
+<button type="submit" >comparer</button>
+
+</div>
+<form (submit)="pgcd()">
+    <button type="submit" >pgcd</button>
+</form>
+</form>

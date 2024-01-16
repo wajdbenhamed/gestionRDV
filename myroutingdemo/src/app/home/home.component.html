@@ -1,0 +1,43 @@
+<p>Coordonné du formateur: <span *ngIf="disponible">--disponible-- </span></p>
+<!--ngswitch online true ou false-->
+<div [ngSwitch]="online">
+  <p *ngSwitchCase="true">état du formateur: <span >(connecté)</span></p>
+  <p *ngSwitchCase="false">etat du formateur: <span>(déconnecté)</span></p>
+</div>
+<img [src]="photo" alt="photo"> <!--  [attribut] => binding ( appel des données à partir du code ts) -->
+<ul>
+  <li>nom: <strong>{{nom}}</strong></li> <!-- interpolation {{nom de paramétre}}-->
+  <li>prénom: <strong>{{prenom}}</strong></li>
+  <li>Age: <strong>{{age}}</strong> </li>
+
+  </ul>
+  <table class="table table-bordered">
+    <thead>
+        <tr class="table-primary">
+            <th>#</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>age</th>
+            <th>categorie</th>
+            <th>détailles</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of candidats; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{c.nom}}</td>
+            <td>{{c.prenom}}</td>
+            <td>{{c.age}}</td>
+            
+            <td>
+                <span *ngIf="c.age<20">junior</span>
+                <span *ngIf="c.age>=20 && c.age<30">senior</span>
+                <span *ngIf="c.age>=30">expert</span>
+            </td>
+            <td> <a routerLink="../detail/{{i+1}}"> choisir</a><br>
+        <a [routerLink]="['../detail',i+1]"> / 2éme façon de choisir</a>
+            </td>
+        </tr>
+    </tbody>
+  </table>

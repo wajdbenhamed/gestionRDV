@@ -1,0 +1,37 @@
+<p>offre works!</p>
+<form (submit)="addoffre()">
+    <div>
+<label id="titre">titre</label>
+<input type="text" [(ngModel)]="offre.titre" name="titre" id="titre" />
+</div>
+<div>
+    <label id="salaire">salaire</label>
+    <input type="number" [(ngModel)]="offre.salaire" name="salaire" id="salaire"/>
+</div>
+<input type="submit"/>
+</form>
+<h2>liste des offres</h2>
+<table class="table" style="text-align: center">
+    <thead>
+        <tr>
+            <th>id  </th>
+            <th>titre  </th>
+            <th>salaire    </th>
+            <th>remarque    </th>
+            <th>details></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let offre of offres; let i=index">
+            <td >{{i+1}}</td>
+            <td>{{offre.titre}}</td>
+            <td>{{offre.salaire}}</td>
+            <td >
+               <span *ngIf="offre.salaire>3000">interessant</span> 
+               <span *ngIf="offre.salaire<3000">ordinaire</span>
+           
+            </td>
+            <td><a routerLink="../details/{{i+1}}">voir</a></td>
+        </tr>
+    </tbody>
+</table>
